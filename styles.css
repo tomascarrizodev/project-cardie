@@ -219,3 +219,83 @@ section#main {
     padding: 0 1em;
     font-size: 1.5em;
 }
+
+.notes-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.notes-header {
+    text-align: center;
+    margin: 20% 0 10% 0;
+    font-weight: bold;
+}
+
+.notes-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+}
+
+.note {
+    background: #64E9EE;
+    width: 80%;
+    min-height: 15em;
+    padding: 1em;
+    box-shadow: 0px 16px 25px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.note-header {
+    width: 100%;
+    display: flex;
+}
+
+.note-title {
+    font-size: 1em;
+    margin-right: auto;
+}
+
+.note-menu {
+    background: transparent;
+    border: none;
+    border-radius: .2em;
+}
+
+.note-menu svg {
+    width: 1em;
+    height: 1em;
+}
+
+.note-menu path {
+    fill: #093A3E;
+}
+
+.note-body {
+    width: 100%;
+    min-height: 9em;
+    padding: 1em .5em;
+}
+
+.note-body.list {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 1em;
+}
+
+.note-body.list.check li {
+    list-style: none;
+}
+
+.note-text {
+    font-size: 2em;
+}
+
+.note-footer {
+    display: flex;
+    gap: 1em;
+}
