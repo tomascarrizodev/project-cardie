@@ -11,7 +11,7 @@ section#welcome {
     height: 100vh;
     display: flex;
     /*! cambiar */
-    display: none;
+    /* display: none; */
     /*! cambiar */
     flex-direction: column;
     justify-content: center;
@@ -94,7 +94,7 @@ section#welcome {
 section#main {
     display: none;
     /*! cambiar */
-    display: block;
+    /* display: block; */
     /*! cambiar */
     transition: all 3s;
 }
@@ -321,4 +321,26 @@ section#main {
 
 #create-btn svg {
     width: 30%;
+}
+
+#input-new-project {
+    width: 8em;
+    margin-left: 2em;
+    border-radius: 3em;
+    padding: .3em 1em;
+}
+
+#confirm-new-project, #cancel-new-project {
+    border: none;
+    color: #fff;
+    border-radius: 3em;
+    padding: .3em .6em;
+}
+
+#confirm-new-project {
+    background-color: #3AAFB9;
+}
+
+#cancel-new-project {
+    background-color: #EE6464;
 }
