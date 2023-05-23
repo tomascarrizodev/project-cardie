@@ -344,3 +344,56 @@ section#main {
 #cancel-new-project {
     background-color: #EE6464;
 }
+
+#delete-project-container {
+    display: none;
+    position: relative;
+}
+
+.delete-project-menu {
+    position: fixed;
+    background: #fff;
+    top: 35vh;
+    left: 20vw;
+    width: 60vw;
+    height: 25vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1em;
+    border-radius: 1em;
+    z-index: 2;
+}
+
+#delete-project-name {
+    font-weight: bold;
+    margin: 0;
+}
+
+#delete-project-btn-cancel {
+    background: #3AAFB9;
+    color: #fff;
+    border: none;
+    border-radius: .2em;
+    padding: .2em;
+}
+
+#delete-project-btn-confirm {
+    background: #EE6464;
+    color: #fff;
+    border: none;
+    border-radius: .2em;
+    padding: .2em;
+}
+
+.delete-project-container::before {
+    content: '';
+    position: fixed;
+    background-color: #6668;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
