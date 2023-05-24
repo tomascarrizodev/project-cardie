@@ -7,6 +7,8 @@ const $ownerName = document.querySelector('#owner-container-name')
 
 const $deleteContainer = document.querySelector('#delete-project-container');
 
+const $projectNameMain = document.querySelector('#project-name');
+
 //* Funcional elements
 const $nameCardie = document.querySelector('#name-input');
 const $projectNameCardie = document.querySelector('#name-project-input');
@@ -69,19 +71,6 @@ function start() {
         }, 300)
 
         // creaccion del project en el menu
-
-        // $projectContainer.innerHTML += `
-        // <div class="project project-on">
-        //     <button id="btn-${projectCounter}" class="menu-project" onclick="showDeleteProjectMenu">
-        //         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-        //             <path
-        //                 d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-        //         </svg>
-        //     </button>
-        //     <span id="project-${projectCounter}">${projectName}</span>
-        // </div>
-        // `
-
         
         let div = newElement('div')
         div.setAttribute('class', 'project project-on')
@@ -93,18 +82,21 @@ function start() {
         button.setAttribute('onclick', 'showDeleteProjectMenu()')
 
         let span = newElement('span')
-        span.setAttribute('id', `project-${projectCounter}`)
+        span.setAttribute('id', `project-name-${projectCounter}`)
         span.textContent = projectName
 
         button.innerHTML = closeSvg
         div.appendChild(button)
         div.appendChild(span)
 
+        $projectNameMain.textContent = projectName
+
         $projectContainer.append(div)
 
         projectsCreated.push(projectName)
         projectsCreatedArr.push(div)
-        $ownerName.innerHTML = owner.charAt(0).toUpperCase() + "'s Cardie"
+        
+        $ownerName.innerHTML = owner[0].toUpperCase() + owner.slice(1) + "'s Cardie"
 
         projectCurrent = projectName
         projectCounter++
@@ -162,7 +154,7 @@ function newProject() {
         $projectContainer.appendChild(div)
 
         input.focus()
-        
+
         creating = true
     } else {
         return false
@@ -217,7 +209,7 @@ function createNewProject(input) {
     button.setAttribute('onclick', 'showDeleteProjectMenu()')
 
     let span = newElement('span')
-    span.setAttribute('id', `project-${projectCounter}`)
+    span.setAttribute('id', `project-name-${projectCounter}`)
     span.textContent = input.value
 
     button.innerHTML = closeSvg
@@ -262,34 +254,38 @@ $projectContainer.addEventListener('click', event => {
     let elem = event.target
     let deleteName
     let deleteID
+    
     if (elem.tagName == 'path') {
         deleteName = elem.parentNode.parentNode.parentNode.querySelector('span').textContent
         deleteID = elem.parentNode.parentNode.parentNode.id
-        // console.log(deleteName)
-        // console.log(deleteID)
     }
     else if (elem.tagName == 'svg') {
         deleteName = elem.parentNode.parentNode.querySelector('span').textContent
         deleteID = elem.parentNode.parentNode.id
-        // console.log(deleteName)
-        // console.log(deleteID)
     } 
     else if (elem.tagName == 'button') {
         deleteName = elem.parentNode.querySelector('span').textContent
         deleteID = elem.parentNode.id
-        // console.log(deleteName)
-        // console.log(deleteID)
+    }
+
+    if (elem.tagName === 'SPAN') {
+        projectsCreatedArr.forEach(e => {
+            e.classList.remove('project-on')
+        })
+        elem.parentNode.classList.add('project-on')
+        $projectNameMain.textContent = elem.textContent
+    }
+    else if (elem.tagName == 'DIV') {
+        projectsCreatedArr.forEach(e => {
+            e.classList.remove('project-on')
+        })
+        elem.classList.add('project-on')
+        $projectNameMain.textContent = elem.querySelector('span').textContent
     }
 
     $deleteProjectName.textContent = deleteName
     deleteProjectID = deleteID
 })
-
-// $btnDeleteProjectMenu.addEventListener('click', event => {
-//     $deleteContainer.style = 'display: block;'
-//     console.log($deleteContainer)
-// })
-
 
 $cancelDeleteProject.addEventListener('click', cancelDeleteProject) 
 
