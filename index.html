@@ -105,6 +105,8 @@
                     <h2 id="project-name">Project Name</h2>
                 </header>
 
+
+
                 <main class="notes-main">
                     <div class="note">
                         <header class="note-header">
@@ -220,6 +222,121 @@
                                 <span>tag</span>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="new-item-container">
+                        <div id="new-item-menu">
+                            <p>New item</p>
+                            <button id="btn-new-sticky" class="btn-new-item">
+                                <div class="new-item-text">
+                                    <span>Sticky note</span>
+                                </div>
+                                <div class="new-item-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path
+                                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <button id="btn-new-ul" class="btn-new-item">
+                                <div class="new-item-text">
+                                    <span>Unordered List</span>
+                                </div>
+                                <div class="new-item-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path
+                                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <button id="btn-new-ol" class="btn-new-item">
+                                <div class="new-item-text">
+                                    <span>Ordered list</span>
+                                </div>
+                                <div class="new-item-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path
+                                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <button id="btn-new-check" class="btn-new-item">
+                                <div class="new-item-text">
+                                    <span>Check list</span>
+                                </div>
+                                <div class="new-item-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <path
+                                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                                    </svg>
+                                </div>
+                            </button>
+                            <button id="btn-cancel-new-item">
+                                <span>Cancel</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="create-note-container">
+                        <div class="create-sticky-menu">
+                            <header class="create-sticky-menu-head">
+                                <h6>New Sticky Note</h6>
+                                <button id="close-sticky-menu">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                        <path
+                                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                    </svg>
+                                </button>
+                            </header>
+                            <div class="create-sticky-menu-body">
+                                <form>
+                                    <label for="title-new-sticky">Title <span class="limit">(0/20)</span></label>
+                                    <input type="text" id="title-new-sticky" placeholder="on Thursday..." />
+                                    <label for="content-new-sticky">Content <span class="limit">(0/100)</span></label>
+                                    <textarea id="content-new-sticky" placeholder="I should go to..."></textarea>
+                                    <label for="tag-new-sticky">Tags <span class="limit">(0/16)</span></label>
+                                    <div class="new-sticky-tag-container">
+                                        <input type="text" id="tag-new-sticky" placeholder="shopping">
+                                        <button id="add-new-tag-sticky">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <path
+                                                    d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div id="new-tag-container-sticky">
+                                        <div class="tag-added-sticky">
+                                            <div id="tag-0" class="tag">
+                                                <span>school</span>
+                                                <button id="btn-tag-0" class="delete-tag">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                                        <path
+                                                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <label for="color-new-sticky">Color</label>
+                                    <div id="color-new-sticky-container">
+                                        <div id="l-blue" class="color-selector selected-color"></div>
+                                        <div id="yellow" class="color-selector"></div>
+                                        <div id="green" class="color-selector"></div>
+                                        <div id="purple" class="color-selector"></div>
+                                        <div id="blue" class="color-selector"></div>
+                                        <div id="orange" class="color-selector"></div>
+                                        <div id="pink" class="color-selector"></div>
+                                        <!--! add for a new color -->
+                                    </div>
+                                </form>
+                                <div class="new-sticky-btn-container">
+                                    <button id="cancel-new-sticky">Cancel</button>
+                                    <button id="create-new-sticky">Create</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="create-container">

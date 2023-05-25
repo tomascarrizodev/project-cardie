@@ -1,3 +1,53 @@
+//* Projects with their notes
+let data = {
+    project: [
+        {
+            type: 'sticky',
+            title: '',
+            body: '',
+            color: 'blue',
+            tags: ['school', 'maths']
+        },
+        {
+            type: 'ul',
+            style: 'dotted',
+            title: '',
+            body: [
+                'frist step',
+                'second',
+                'third'
+            ],
+            color: 'blue',
+            tags: ['school', 'maths']
+        },
+        {
+            type: 'ol',
+            style: 'num',
+            title: '',
+            body: [
+                'frist step',
+                'second',
+                'third'
+            ],
+            color: 'blue',
+            tags: ['school', 'maths']
+        },
+        {
+            type: 'check',
+            title: '',
+            body: [
+                'frist step',
+                'second',
+                'third'
+            ],
+            color: 'blue',
+            tags: ['school', 'maths'],
+            checks: [1, 2],
+            checked: 'largo'
+        }
+    ]
+}
+
 //* Visual elements
 const $welcome = document.querySelector('#welcome');
 const $main = document.querySelector('#main');
@@ -8,6 +58,8 @@ const $ownerName = document.querySelector('#owner-container-name')
 const $deleteContainer = document.querySelector('#delete-project-container');
 
 const $projectNameMain = document.querySelector('#project-name');
+
+const $newItemMenu = document.querySelector('#new-item-menu');
 
 //* Funcional elements
 const $nameCardie = document.querySelector('#name-input');
@@ -26,6 +78,12 @@ const $projectContainer = document.querySelector('#project-container');
 let $deleteProjectName = document.querySelector('#delete-project-name')
 const $cancelDeleteProject = document.querySelector('#delete-project-btn-cancel')
 const $confirmDeleteProject = document.querySelector('#delete-project-btn-confirm')
+
+const $btnCreateNote = document.querySelector('#create-btn');
+
+const $btnCancelNewItem = document.querySelector('#btn-cancel-new-item');
+
+const $btnNewStickyMenu = document.querySelector('#btn-new-sticky');
 
 //* Variables
 const closeSvg = `
@@ -95,6 +153,8 @@ function start() {
 
         projectsCreated.push(projectName)
         projectsCreatedArr.push(div)
+
+        data[`project-${projectCounter}`] = []
         
         $ownerName.innerHTML = owner[0].toUpperCase() + owner.slice(1) + "'s Cardie"
 
@@ -121,13 +181,6 @@ function toggleMenu() {
 
 function newProject() {
     if (creating == false) {
-        // $projectContainer.innerHTML += `
-        //     <div class="project" id="new-project-temp">
-        //         <input type="text" id="input-new-project">
-        //         <button id="confirm-new-project" onclick="confirmNewProject()">Create</button>
-        //         <button id="cancel-new-project" onclick="cancelNewProject()">Cancel</button>
-        //     </div>
-        //     `
         
         let div = newElement('div')
         div.setAttribute('class', 'project')
@@ -187,17 +240,6 @@ function cancelNewProject() {
 }
 
 function createNewProject(input) {
-    // $projectContainer.innerHTML += `
-    //     <div class="project">
-    //         <button id="btn-${projectCounter}" class="menu-project">
-    //         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-    //         <path
-    //             d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-    //     </svg>
-    //         </button>
-    //         <span id="project-${projectCounter}">${input.value}</span>
-    //     </div>
-    //     `
 
     let div = newElement('div')
     div.setAttribute('class', 'project')
@@ -218,6 +260,8 @@ function createNewProject(input) {
 
     $projectContainer.append(div)
 
+    data[`project-${projectCounter}`] = []
+
     projectCounter++
     projectsCreated.push(input.value)
     projectsCreatedArr.push(div)
@@ -226,7 +270,6 @@ function createNewProject(input) {
 
 function showDeleteProjectMenu() {
     $deleteContainer.style = 'display: block;'
-    // console.log($deleteContainer.querySelector('span'))
 }
 
 function cancelDeleteProject() {
@@ -236,7 +279,16 @@ function cancelDeleteProject() {
 function confirmDeleteProject() {
     console.log(deleteProjectID)
     document.querySelector(`#${deleteProjectID}`).remove()
+    delete data[deleteProjectID]
     cancelDeleteProject()
+}
+
+function cancelNewItem() {
+    $newItemMenu.style.display = 'none'
+}
+
+function createNewStickyMenu() {
+
 }
 
 //* Event listeners
@@ -245,10 +297,6 @@ $btnStart.addEventListener('click', start)
 $btnMenu.addEventListener('click', toggleMenu)
 
 $btnNewProject.addEventListener('click', newProject)
-
-// $projectContainer.addEventListener('change', event => {
-//     projectsCreatedArr = document.querySelectorAll('.project').filter
-// })
 
 $projectContainer.addEventListener('click', event => {
     let elem = event.target
@@ -290,3 +338,13 @@ $projectContainer.addEventListener('click', event => {
 $cancelDeleteProject.addEventListener('click', cancelDeleteProject) 
 
 $confirmDeleteProject.addEventListener('click', confirmDeleteProject)
+
+$btnCreateNote.addEventListener('click', function () {
+    $newItemMenu.style.display = 'flex'
+})
+
+$btnCancelNewItem.addEventListener('click', cancelNewItem)
+
+$btnNewStickyMenu.addEventListener('click', function () {
+    console.log('sticky')
+})

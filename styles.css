@@ -405,3 +405,264 @@ section#main {
     top: 0;
     left: 0;
 }
+
+.new-item-container {
+    position: relative;
+}
+
+#new-item-menu {
+    margin:0 auto;
+    background: #fff;
+    box-shadow: #6668 0 0 30px;
+    border-radius: 2em;
+    width: 55vw;
+    padding: 2em 1em;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    align-items: stretch;
+}
+
+#new-item-menu p {
+    margin-bottom: 1em;
+}
+
+.btn-new-item {
+    display: flex;
+    height: 2.5em;
+    background: transparent;
+    border: 2px solid #3AAFB9;
+    border-radius: 2em;
+    margin-bottom: .5em;
+    font-size: .6em;
+}
+
+.new-item-text {
+    width: 65%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    color: #3AAFB9;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.new-item-text span {
+    font-weight: bold;
+}
+
+.new-item-svg {
+    width: 35%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    border-left: 2px solid #3AAFB9;
+}
+
+.new-item-svg svg {
+    width: .9em;
+}
+
+.new-item-svg path {
+    fill: #3AAFB9;
+}
+
+#btn-cancel-new-item {
+    color: #fff;
+    background: #EE6464;
+    border: none;
+    border-radius: 2em;
+    margin-top: .8em;
+    padding: 1em 2em;
+    font-weight: bold;
+}
+
+.create-sticky-menu {
+    background: #fff;
+    box-shadow: #6668 0 0 30px;
+    margin: 0 auto;
+    border-radius: 2em;
+    width: 80vw;
+    padding: .5em 1em;
+}
+
+.create-sticky-menu-head {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+}
+
+.create-sticky-menu-head h6 {
+    font-size: 1em;
+    font-weight: bold;
+    margin: auto;
+}
+
+#close-sticky-menu {
+    border: none;
+    background: transparent;
+    border-radius: .5em;
+}
+
+#close-sticky-menu svg {
+    width: 1em;
+}
+
+.create-sticky-menu-body {
+    padding: 0 .5em .5em .5em;
+}
+
+.create-sticky-menu-body span {
+    color: #888;
+    font-size: .8em;
+    padding-left: .2em;
+    font-style: italic;
+}
+
+#title-new-sticky, .create-sticky-menu-body textarea {
+    border: none;
+    background: #E4EFF7;
+    border-radius: 2em;
+    padding: .6em 1em;
+    margin: .5rem 0 .8em 0;
+}
+
+#title-new-sticky::placeholder, .create-sticky-menu-body textarea::placeholder {
+    font-style: italic;
+    color: rgba(9, 58, 62, 0.5);
+}
+
+.create-sticky-menu-body textarea {
+    display: block;
+    resize: none;
+    width: 100%;
+    height: 4em;
+    border-radius: 1em;
+}
+
+#new-tag-container-sticky {
+    margin-bottom: .8em;
+}
+
+.new-sticky-tag-container {
+    margin: .5rem 0 .5em 0;
+    display: flex;
+}
+
+#tag-new-sticky {
+    background: #A9D2EF;
+    border-radius: 2em 0 0 2em;
+    padding: .6em 1em;
+    border: none;
+    width: 8em;
+}
+
+#tag-new-sticky::placeholder {
+    font-style: italic;
+    color: rgb(0, 16, 17, .5);
+}
+
+#add-new-tag-sticky {
+    background: #608FB0;
+    border-radius: 0 2em 2em 0;
+    border: none;
+    width: 3em;
+}
+
+#add-new-tag-sticky svg {
+    width: 1em;
+}
+
+#add-new-tag-sticky path {
+    fill: #fff;
+}
+
+.tag {
+    display: inline-flex;
+    padding: 0 1em;
+    background: #3AAFB9;
+    border-radius: 2em;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.tag span {
+    color: #fff;
+    font-weight: bold;
+    width: 70%;
+}
+
+.delete-tag {
+    padding: .5em;
+    border: none;
+    background-color: transparent;
+    width: 30%;
+}
+
+.delete-tag svg {
+    width: .6em;
+}
+
+.delete-tag path {
+    fill: #fff;
+}
+
+.tag-added-sticky {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#color-new-sticky-container {
+    display: grid;
+    height: 1.5em;
+    grid-template-columns: repeat(7, 1fr);
+    gap: .5em;
+    margin: .5em 0 .8em 0;
+}
+
+.color-selector {
+    border-radius: .5em;
+    background: #ccc;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, .25) ;
+}
+
+#l-blue {background-color: #64E9EE;}
+#yellow {background-color: #F8F155;}
+#green {background-color: #77EE64;}
+#purple {background-color: #CA64EE;}
+#blue {background-color: #6482EE;}
+#orange {background-color: #FF9F46;}
+#pink {background-color: #FE8EE5;}
+
+.selected-color {
+    border: 3px solid #555;
+}
+
+.new-sticky-btn-container {
+    margin: 1.2em 0 .8em 0;
+    display: flex;
+    justify-content: space-evenly;
+    height: 2em;
+}
+
+.new-sticky-btn-container button {
+    width: 45%;
+    border: none;
+    border-radius: 2em;
+    display: grid;
+    place-content: center;
+    font-weight: bold;
+    font-style: italic;
+    color: #fff;
+}
+
+#cancel-new-sticky {
+    background-color: #EE6464;
+}
+
+#create-new-sticky {
+    background-color: #3AAFB9;
+}
