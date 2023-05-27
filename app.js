@@ -78,6 +78,8 @@ const $tagAddedSticky = document.querySelector('#tag-added-sticky')
 
 const $allColors = document.querySelectorAll('.color-selector');
 
+const $notesContainer = document.querySelector('#notes-container')
+
 //* Funcional elements
 const $nameCardie = document.querySelector('#name-input');
 const $projectNameCardie = document.querySelector('#name-project-input');
@@ -318,8 +320,63 @@ function cancelNewItem() {
 function createNewStickyMenu() {
     let title = document.querySelector('#title-new-sticky').value
     let content = document.querySelector('#content-new-sticky').value
-    stickyTemp.title = title
-    stickyTemp.content = content
+    if (title.match(regex) && content.match(regex)) {
+        let container = newElement('div')
+        container.setAttribute('class', `note sticky ${stickyTemp.color}`)
+
+        let header = newElement('header')
+        header.setAttribute('class', 'note-header')
+
+        let h5 = newElement('h5')
+        h5.setAttribute('class', 'note-title')
+        h5.textContent = stickyTemp.title
+
+        let button = newElement('button')
+        button.setAttribute('class', 'note-menu')
+
+        button.innerHTML = closeSvg
+        header.appendChild(h5)
+        header.appendChild(button)
+
+        let body = newElement('div')
+        body.setAttribute('class', 'note-body')
+
+        let p = newElement('p')
+        p.setAttribute('class', 'note-text')
+        p.textContent = stickyTemp.content
+
+        body.appendChild(p)
+
+        let footer = newElement('div')
+        footer.setAttribute('class', 'note-footer')
+
+        stickyTemp.tags.forEach(e => {
+            let tag = newElement('div')
+            tag.setAttribute('class', 'note-tag')
+
+            let tagName = newElement('span')
+            tagName.textContent = e
+
+            tag.append(tagName)
+            footer.appendChild(tag)
+        })
+
+        container.appendChild(header)
+        container.appendChild(body)
+        container.appendChild(footer)
+
+        $notesContainer.insertBefore(container, document.querySelector('.new-item-container'))
+
+        stickyTemp = {
+            title: '',
+            content: '',
+            tags: [],
+            color: 'l-blue'
+        }
+
+        cancelNewStickyMenu()
+    }
+
 }
 
 function cancelNewStickyMenu() {

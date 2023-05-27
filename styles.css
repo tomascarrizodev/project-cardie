@@ -247,7 +247,6 @@ section#main {
 }
 
 .note {
-    background: #64E9EE;
     width: 80%;
     min-height: 15em;
     padding: 1em;
@@ -670,3 +669,11 @@ section#main {
 #create-new-sticky {
     background-color: #3AAFB9;
 }
+
+.l-blue {background-color: #64E9EE;}
+.yellow {background-color: #F8F155;}
+.green {background-color: #77EE64;}
+.purple {background-color: #CA64EE;}
+.blue {background-color: #6482EE;}
+.orange {background-color: #FF9F46;}
+.pink {background-color: #FE8EE5;}
