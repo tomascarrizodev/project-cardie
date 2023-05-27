@@ -478,13 +478,14 @@ section#main {
     font-weight: bold;
 }
 
-.create-sticky-menu {
+#create-sticky-menu {
     background: #fff;
     box-shadow: #6668 0 0 30px;
     margin: 0 auto;
     border-radius: 2em;
     width: 80vw;
     padding: .5em 1em;
+    display: none;
 }
 
 .create-sticky-menu-head {
@@ -500,6 +501,7 @@ section#main {
 }
 
 #close-sticky-menu {
+    width: 2em;
     border: none;
     background: transparent;
     border-radius: .5em;
@@ -580,12 +582,13 @@ section#main {
 
 .tag {
     display: inline-flex;
-    padding: 0 1em;
+    padding-left: 1em;
     background: #3AAFB9;
     border-radius: 2em;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin: .2em;
 }
 
 .tag span {
@@ -596,6 +599,7 @@ section#main {
 
 .delete-tag {
     padding: .5em;
+    padding-right: 1.5em;
     border: none;
     background-color: transparent;
     width: 30%;

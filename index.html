@@ -278,7 +278,7 @@
                     </div>
 
                     <div class="create-note-container">
-                        <div class="create-sticky-menu">
+                        <div id="create-sticky-menu">
                             <header class="create-sticky-menu-head">
                                 <h6>New Sticky Note</h6>
                                 <button id="close-sticky-menu">
@@ -290,13 +290,13 @@
                             </header>
                             <div class="create-sticky-menu-body">
                                 <form>
-                                    <label for="title-new-sticky">Title <span class="limit">(0/20)</span></label>
-                                    <input type="text" id="title-new-sticky" placeholder="on Thursday..." />
-                                    <label for="content-new-sticky">Content <span class="limit">(0/100)</span></label>
-                                    <textarea id="content-new-sticky" placeholder="I should go to..."></textarea>
-                                    <label for="tag-new-sticky">Tags <span class="limit">(0/16)</span></label>
+                                    <label for="title-new-sticky" id="sticky-label-title">Title <span class="limit">(0/20)</span></label>
+                                    <input type="text" id="title-new-sticky" autocomplete="off" placeholder="on Thursday..." />
+                                    <label for="content-new-sticky" id="sticky-label-content">Content <span class="limit">(0/100)</span></label>
+                                    <textarea id="content-new-sticky" placeholder="I should go to..." autocomplete="off"></textarea>
+                                    <label for="tag-new-sticky" id="sticky-label-tag">Tags <span class="limit">(0/16)</span></label>
                                     <div class="new-sticky-tag-container">
-                                        <input type="text" id="tag-new-sticky" placeholder="shopping">
+                                        <input type="text" id="tag-new-sticky" autocomplete="off" placeholder="shopping">
                                         <button id="add-new-tag-sticky">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                                 <path
@@ -305,18 +305,7 @@
                                         </button>
                                     </div>
                                     <div id="new-tag-container-sticky">
-                                        <div class="tag-added-sticky">
-                                            <div id="tag-0" class="tag">
-                                                <span>school</span>
-                                                <button id="btn-tag-0" class="delete-tag">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                                                        <path
-                                                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                        </div>
+                                        <div class="tag-added-sticky" id="tag-added-sticky"></div>
                                     </div>
                                     <label for="color-new-sticky">Color</label>
                                     <div id="color-new-sticky-container">

@@ -48,6 +48,15 @@ let data = {
     ]
 }
 
+let stickyTemp = {
+    title: '',
+    content: '',
+    tags: [],
+    color: 'l-blue'
+}
+
+let tagsElem = []
+
 //* Visual elements
 const $welcome = document.querySelector('#welcome');
 const $main = document.querySelector('#main');
@@ -60,6 +69,14 @@ const $deleteContainer = document.querySelector('#delete-project-container');
 const $projectNameMain = document.querySelector('#project-name');
 
 const $newItemMenu = document.querySelector('#new-item-menu');
+
+const $createStickyMenu = document.querySelector('#create-sticky-menu');
+
+const $newTagContainerSticky = document.querySelector('#new-tag-container-sticky')
+
+const $tagAddedSticky = document.querySelector('#tag-added-sticky')
+
+const $allColors = document.querySelectorAll('.color-selector');
 
 //* Funcional elements
 const $nameCardie = document.querySelector('#name-input');
@@ -84,6 +101,17 @@ const $btnCreateNote = document.querySelector('#create-btn');
 const $btnCancelNewItem = document.querySelector('#btn-cancel-new-item');
 
 const $btnNewStickyMenu = document.querySelector('#btn-new-sticky');
+
+const $btnCreateNewSticky = document.querySelector('#create-new-sticky')
+const $btnCancelNewSticky = document.querySelector('#cancel-new-sticky')
+
+const $addNewTagSticky = document.querySelector('#add-new-tag-sticky')
+
+const $newTitleInputSticky = document.querySelector('#title-new-sticky')
+const $newContentInputSticky = document.querySelector('#content-new-sticky')
+const $newTagInputSticky = document.querySelector('#tag-new-sticky');
+
+const $colorsContainer = document.querySelector('#color-new-sticky-container');
 
 //* Variables
 const closeSvg = `
@@ -288,7 +316,113 @@ function cancelNewItem() {
 }
 
 function createNewStickyMenu() {
+    let title = document.querySelector('#title-new-sticky').value
+    let content = document.querySelector('#content-new-sticky').value
+    stickyTemp.title = title
+    stickyTemp.content = content
+}
 
+function cancelNewStickyMenu() {
+    document.querySelector('#title-new-sticky').value = ''
+    document.querySelector('#content-new-sticky').value = ''
+    stickyTemp.title = ''
+    stickyTemp.content = ''
+    stickyTemp.color = ''
+    stickyTemp.tags = []
+    $newTagContainerSticky.querySelectorAll('.tag').forEach(e => {
+        e.remove()
+    })
+    restartLimits()
+    chooseColorSticky(document.querySelector('#l-blue'))
+    $createStickyMenu.style.display = 'none'
+}
+
+function createNewTagSticky(name) {
+    let repeat = false
+    let limit = 5
+    stickyTemp.tags.forEach(e => {
+        if (e == name) {
+            repeat = true
+        }
+    })
+
+    if (repeat) {
+        alert('Existing tag. Pick another name')
+    } else if (name.length > 16) {
+        alert('Name tag too long. Your tag: ' + name.length + '. Max: 16')
+    } else if (name.length == 0) {
+        alert("You can't add an empty tag")
+    } else if (name.includes(' ')) {
+        alert("You can't add white spaces")
+    } else{ 
+        if (stickyTemp.tags.length == limit) {
+            alert("You can't add more tags")
+        } else {
+            let div = newElement('div')
+        div.classList.add('tag')
+        div.id = `tag-${stickyTemp.tags.length}`
+    
+        let span = newElement('span')
+        span.textContent = name
+    
+        let button = newElement('div')
+        button.classList.add('delete-tag')
+        button.id = `btn-tag-${stickyTemp.tags.length}`
+        button.innerHTML = closeSvg
+        
+        div.appendChild(span)
+        div.appendChild(button)
+        
+        $newTagContainerSticky.appendChild(div)
+        tagsElem.push(div)
+        stickyTemp.tags.push(name)
+        document.querySelector('#tag-new-sticky').value = ''
+        document.querySelector('#sticky-label-tag').querySelector('span').textContent = '(0/16)'
+        }
+    }
+}
+
+function addNewTagSticky() {
+    let tag = document.querySelector('#tag-new-sticky').value
+    createNewTagSticky(tag)
+}
+
+function handleInputLimits(ele, id, max) {
+    let span = document.querySelector(`#${id}`).querySelector('span')
+    console.log(ele.value)
+    span.textContent = `${ele.value.length}/${max}`
+    if (ele.value.length > max) {
+        span.style.color = 'red'
+    } else {
+        span.style.color = '#888'
+    }
+    if (id.includes('title')) {
+        stickyTemp.title = ele.value
+    } else if (id.includes('content')) {
+        stickyTemp.content = ele.value
+    }
+}
+
+function chooseColorSticky(elem) {
+    $allColors.forEach(e => {
+        e.classList.remove('selected-color')
+    })
+    elem.classList.add('selected-color')
+    stickyTemp.color = elem.id
+}
+
+function restartLimits() {
+    let limits = document.querySelectorAll('.limit')
+
+    limits.forEach(elem => {
+        if (elem.parentNode.id.includes('title')) {
+            elem.textContent = '(0/20)'
+        } else if (elem.parentNode.id.includes('content')) {
+            elem.textContent = '(0/100)'
+        } else if (elem.parentNode.id.includes('tags')) {
+            elem.textContent = '(0/16)'
+        }
+    })
 }
 
 //* Event listeners
@@ -346,5 +480,87 @@ $btnCreateNote.addEventListener('click', function () {
 $btnCancelNewItem.addEventListener('click', cancelNewItem)
 
 $btnNewStickyMenu.addEventListener('click', function () {
-    console.log('sticky')
+    $createStickyMenu.style.display = 'block'
+    cancelNewItem()
+})
+
+document.querySelector('.create-sticky-menu-head').onclick = (event) => {
+    if (event.target.tagName == 'BUTTON' || event.target.tagName == 'path' || event.target.tagName == 'svg') {
+        cancelNewStickyMenu()
+    }
+}
+
+$btnCreateNewSticky.addEventListener('click', createNewStickyMenu)
+
+$btnCancelNewSticky.addEventListener('click', cancelNewStickyMenu)
+
+$addNewTagSticky.addEventListener('click', event => {
+    event.preventDefault()
+    addNewTagSticky()
+})
+
+$newTagContainerSticky.addEventListener('click', event => {
+    let elem = event.target
+    let deletingTag
+    let content
+    if (elem.tagName == 'path') {
+        deletingTag = elem.parentNode.parentNode.parentNode.id
+        content = elem.parentNode.parentNode.parentNode.querySelector('span').textContent
+    } else if (elem.tagName == 'svg') {
+        deletingTag = elem.parentNode.parentNode.id
+        content = elem.parentNode.parentNode.querySelector('span').textContent
+    } else if (elem.id.includes(`btn-tag-`)) {
+        deletingTag = elem.parentNode.id
+        content = elem.parentNode.querySelector('span').textContent
+    }
+    let tagDelete = document.querySelector(`#${deletingTag}`)
+    stickyTemp.tags.forEach((item, index, arr) => {
+        if (item == content) {
+            arr.splice(index, 1)
+        }
+    })
+    if (deletingTag !== 'new-tag-container-sticky') {
+        $newTagContainerSticky.removeChild(tagDelete)
+    }
+})
+
+$newTitleInputSticky.addEventListener('input', event => {
+    handleInputLimits(event.target, 'sticky-label-title', 20)
+})
+
+$newTagInputSticky.addEventListener('input', event => {
+    handleInputLimits(event.target, 'sticky-label-tag', 16)
+})
+
+$newContentInputSticky.addEventListener('input', event => {
+    handleInputLimits(event.target, 'sticky-label-content', 100)
+})
+
+$colorsContainer.addEventListener('click', event => {
+    console.log(event.target.id)
+    switch (event.target.id) {
+        case 'l-blue':
+            chooseColorSticky(event.target)
+            break;
+        case 'yellow':
+            chooseColorSticky(event.target)
+            break;
+        case 'green':
+            chooseColorSticky(event.target)
+            break;
+        case 'purple':
+            chooseColorSticky(event.target)
+            break;
+        case 'blue':
+            chooseColorSticky(event.target)
+            break;
+        case 'orange':
+            chooseColorSticky(event.target)
+            break;
+        case 'pink':
+            chooseColorSticky(event.target)
+            break;
+        default:
+            return false
+    }
 })
