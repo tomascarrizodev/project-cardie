@@ -57,6 +57,10 @@ let stickyTemp = {
 
 let tagsElem = []
 
+let itemsCreated = [
+    {id: 0, title: '', type: '', content: '', color: '', tags: []}
+]
+
 //* Visual elements
 const $welcome = document.querySelector('#welcome');
 const $main = document.querySelector('#main');
@@ -135,6 +139,8 @@ let projectsCreatedArr = []
 let deletingProject
 let deleteProjectID
 
+let itemCounter = 0
+
 //* Visual functions
 function newElement(elem) {
     return document.createElement(elem)
@@ -188,7 +194,7 @@ function start() {
         
         $ownerName.innerHTML = owner[0].toUpperCase() + owner.slice(1) + "'s Cardie"
 
-        projectCurrent = projectName
+        projectCurrent = div.id
         projectCounter++
     } else {
         alert('Campos incorrectos o incompletos')
@@ -323,6 +329,7 @@ function createNewStickyMenu() {
     if (title.match(regex) && content.match(regex)) {
         let container = newElement('div')
         container.setAttribute('class', `note sticky ${stickyTemp.color}`)
+        container.id = `item-${itemCounter}`
 
         let header = newElement('header')
         header.setAttribute('class', 'note-header')
@@ -333,6 +340,7 @@ function createNewStickyMenu() {
 
         let button = newElement('button')
         button.setAttribute('class', 'note-menu')
+        button.id = `btn-delete-item-${itemCounter}`
 
         button.innerHTML = closeSvg
         header.appendChild(h5)
@@ -374,6 +382,7 @@ function createNewStickyMenu() {
             color: 'l-blue'
         }
 
+        itemCounter++
         cancelNewStickyMenu()
     }
 
@@ -446,7 +455,6 @@ function addNewTagSticky() {
 
 function handleInputLimits(ele, id, max) {
     let span = document.querySelector(`#${id}`).querySelector('span')
-    console.log(ele.value)
     span.textContent = `${ele.value.length}/${max}`
     if (ele.value.length > max) {
         span.style.color = 'red'
@@ -594,30 +602,5 @@ $newContentInputSticky.addEventListener('input', event => {
 })
 
 $colorsContainer.addEventListener('click', event => {
-    console.log(event.target.id)
-    switch (event.target.id) {
-        case 'l-blue':
-            chooseColorSticky(event.target)
-            break;
-        case 'yellow':
-            chooseColorSticky(event.target)
-            break;
-        case 'green':
-            chooseColorSticky(event.target)
-            break;
-        case 'purple':
-            chooseColorSticky(event.target)
-            break;
-        case 'blue':
-            chooseColorSticky(event.target)
-            break;
-        case 'orange':
-            chooseColorSticky(event.target)
-            break;
-        case 'pink':
-            chooseColorSticky(event.target)
-            break;
-        default:
-            return false
-    }
+    chooseColorSticky(event.target)
 })

@@ -284,19 +284,25 @@
                                 <button id="close-sticky-menu">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                                         <path
-                                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
                                     </svg>
                                 </button>
                             </header>
                             <div class="create-sticky-menu-body">
                                 <form>
-                                    <label for="title-new-sticky" id="sticky-label-title">Title <span class="limit">(0/20)</span></label>
-                                    <input type="text" id="title-new-sticky" autocomplete="off" placeholder="on Thursday..." />
-                                    <label for="content-new-sticky" id="sticky-label-content">Content <span class="limit">(0/100)</span></label>
-                                    <textarea id="content-new-sticky" placeholder="I should go to..." autocomplete="off"></textarea>
-                                    <label for="tag-new-sticky" id="sticky-label-tag">Tags <span class="limit">(0/16)</span></label>
+                                    <label for="title-new-sticky" id="sticky-label-title">Title <span
+                                            class="limit">(0/20)</span></label>
+                                    <input type="text" id="title-new-sticky" autocomplete="off"
+                                        placeholder="on Thursday..." />
+                                    <label for="content-new-sticky" id="sticky-label-content">Content <span
+                                            class="limit">(0/100)</span></label>
+                                    <textarea id="content-new-sticky" placeholder="I should go to..."
+                                        autocomplete="off"></textarea>
+                                    <label for="tag-new-sticky" id="sticky-label-tag">Tags <span
+                                            class="limit">(0/16)</span></label>
                                     <div class="new-sticky-tag-container">
-                                        <input type="text" id="tag-new-sticky" autocomplete="off" placeholder="shopping">
+                                        <input type="text" id="tag-new-sticky" autocomplete="off"
+                                            placeholder="shopping">
                                         <button id="add-new-tag-sticky">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                                 <path
@@ -325,7 +331,80 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="create-list-menu">
+                            <header class="create-list-menu-head">
+                                <h6>New List Note</h6>
+                                <button id="close-list-menu">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                        <path
+                                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                    </svg>
+                                </button>
+                            </header>
+                            <div class="create-list-menu-body">
+                                <form>
+                                    <label for="title-new-list" id="list-label-title">Title <span class="limit">(0/20)</span></label>
+                                    <input type="text" id="title-new-list" autocomplete="off" placeholder="on Thursday..." />
+                                    <div id="items-section-list-menu">
+                                        <label for="content-new-list" id="list-label-content">Items <span class="limit">(0/30)</span></label>
+                                        <div id="style-list-items">
+                                            <button id="number-list-style" class="selected-style-list">1.</button>
+                                            <button id="roman-list-style">I.</button>
+                                            <button id="upper-list-style">A.</button>
+                                            <button id="lower-list-style">a.</button>
+                                        </div>
+                                    </div>
+                                    <div class="" id="items-list-container">
+                                        <div id="new-list-item-0" class="new-list-item">
+                                            <p>First item</p>
+                                            <button id="delete-new-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                                    <path
+                                                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div id="options-new-item-list">
+                                            <input type="text" placeholder="Next step..." />
+                                            <div id="limit-add-item-list">
+                                                <span class="limit">(0/30)</span>
+                                                <button id="add-new-list-item">Add</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label for="tag-new-list" id="list-label-tag">Tags <span
+                                            class="limit">(0/16)</span></label>
+                                    <div class="new-list-tag-container">
+                                        <input type="text" id="tag-new-list" autocomplete="off" placeholder="shopping">
+                                        <button id="add-new-tag-list">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <path
+                                                    d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div id="new-tag-container-list">
+                                        <div class="tag-added-list" id="tag-added-list"></div>
+                                    </div>
+                                    <label for="color-new-list">Color</label>
+                                    <div id="color-new-list-container">
+                                        <div id="l-blue" class="color-selector selected-color"></div>
+                                        <div id="yellow" class="color-selector"></div>
+                                        <div id="green" class="color-selector"></div>
+                                        <div id="purple" class="color-selector"></div>
+                                        <div id="blue" class="color-selector"></div>
+                                        <div id="orange" class="color-selector"></div>
+                                        <div id="pink" class="color-selector"></div>
+                                        <!--! add for a new color -->
+                                    </div>
+                                </form>
+                                <div class="new-list-btn-container">
+                                    <button id="cancel-new-list">Cancel</button>
+                                    <button id="create-new-list">Create</button>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
 
                     <div class="create-container">
